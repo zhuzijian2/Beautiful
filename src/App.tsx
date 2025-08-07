@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import { useState } from "react";
 import { AuthContext } from '@/contexts/authContext';
 import PerformanceOptimizer from '@/components/PerformanceOptimizer';
+import MobileOptimizer from '@/components/MobileOptimizer';
 
 // 懒加载组件
 const Home = lazy(() => import("@/pages/Home"));
@@ -25,17 +26,19 @@ export default function App() {
   };
 
   return (
-    <PerformanceOptimizer>
-      <AuthContext.Provider
-        value={{ isAuthenticated, setIsAuthenticated, logout }}
-      >
-        <Suspense fallback={<LoadingSpinner />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/other" element={<div className="text-center text-xl">Other Page - Coming Soon</div>} />
-          </Routes>
-        </Suspense>
-      </AuthContext.Provider>
-    </PerformanceOptimizer>
+    <MobileOptimizer>
+      <PerformanceOptimizer>
+        <AuthContext.Provider
+          value={{ isAuthenticated, setIsAuthenticated, logout }}
+        >
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/other" element={<div className="text-center text-xl">Other Page - Coming Soon</div>} />
+            </Routes>
+          </Suspense>
+        </AuthContext.Provider>
+      </PerformanceOptimizer>
+    </MobileOptimizer>
   );
 }
