@@ -1,0 +1,3 @@
+[33md416bcc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Add Vercel configuration to fix 404 error
+[33m52d5647[m Fix build script for cross-platform compatibility
+[33m3446eb8[m Initial commit: React project with Vite
